@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171106055049) do
+ActiveRecord::Schema.define(version: 20171113013518) do
 
-  create_table "customers", primary_key: "customerNumber", id: :integer, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "customers", primary_key: "customerNumber", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "customerName", limit: 50, null: false
     t.string "contactLastName", limit: 50, null: false
     t.string "contactFirstName", limit: 50, null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20171106055049) do
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
-  create_table "employees", primary_key: "employeeNumber", id: :integer, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "employees", primary_key: "employeeNumber", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "lastName", limit: 50, null: false
     t.string "firstName", limit: 50, null: false
     t.string "extension", limit: 10, null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20171106055049) do
     t.index ["productCode"], name: "productCode"
   end
 
-  create_table "orders", primary_key: "orderNumber", id: :integer, default: nil, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "orders", primary_key: "orderNumber", id: :integer, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.date "orderDate", null: false
     t.date "requiredDate", null: false
     t.date "shippedDate"
@@ -97,7 +97,7 @@ ActiveRecord::Schema.define(version: 20171106055049) do
     t.index ["productLine"], name: "productLine"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

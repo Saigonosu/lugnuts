@@ -21,6 +21,49 @@
 		<%= f.password_field :password_confirmation, autocomplete: "off" %>
 	  </div>
 
+    <%= f.fields_for :customer do |customer_fields| %>
+      <div class="field">
+      <%= customer_fields.label "First Name" %>
+      <%= customer_fields.text_field :contactFirstName, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label "Last Name" %>
+      <%= customer_fields.text_field :contactLastName, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label :phone %>
+      <%= customer_fields.text_field :phone, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label "Address" %>
+      <%= customer_fields.text_field :addressLine1, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label "Address" %>
+      <%= customer_fields.text_field :addressLine2, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label :city %>
+      <%= customer_fields.text_field :city, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label :state %>
+      <%= customer_fields.text_field :state, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label :country %>
+      <%= customer_fields.text_field :country, autocomplete: "off" %>
+      </div>
+    <% end %>
+
+
 	  <div class="actions">
 		<%= f.submit "Sign up" %>
 	  </div>
