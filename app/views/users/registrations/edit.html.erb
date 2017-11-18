@@ -1,3 +1,5 @@
+
+<div class="user-form" id="signup">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -30,6 +32,43 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
+  
+   <%= f.fields_for :customer do |customer_fields| %>
+      <div class="field">
+      <%= customer_fields.label "First Name" %>
+      <%= customer_fields.text_field :contactFirstName, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label "Last Name" %>
+      <%= customer_fields.text_field :contactLastName, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label :phone %>
+      <%= customer_fields.text_field :phone, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label "Address" %>
+      <%= customer_fields.text_field :addressLine1, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label :city %>
+      <%= customer_fields.text_field :city, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label :state %>
+      <%= customer_fields.text_field :state, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+      <%= customer_fields.label :country %>
+      <%= customer_fields.text_field :country, autocomplete: "off" %>
+      </div>
+    <% end %>
 
   <div class="actions">
     <%= f.submit "Update" %>
@@ -41,3 +80,4 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>
