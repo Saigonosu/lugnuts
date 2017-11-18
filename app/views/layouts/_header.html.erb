@@ -5,6 +5,9 @@
       <%= link_to destroy_user_session_path, method: :delete do %>
         <%= image_tag("login-icon.png") %> <br>Logout
       <% end %>
+      <%= link_to edit_user_registration_path do %>
+        <%= image_tag("login-icon.png") %> <br>Account
+      <% end %>
     <% else %>
       <%= link_to new_user_session_path do %>
         <%= image_tag("login-icon.png") %> <br>Login
