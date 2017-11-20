@@ -1,6 +1,7 @@
 class Customer < ApplicationRecord
   self.primary_key = "customerNumber"
   belongs_to :user
+  has_many :orders, foreign_key: 'customerNumber'
   before_save :populate_customer_name
 
   private
