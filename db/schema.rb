@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20171120062337) do
   end
 
   create_table "line_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "product_id"
+    t.string "product_id", limit: 15
     t.bigint "cart_id"
     t.integer "quantity", default: 1
     t.integer "order_id"
