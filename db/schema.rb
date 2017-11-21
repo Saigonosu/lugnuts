@@ -136,8 +136,6 @@ ActiveRecord::Schema.define(version: 20171120062337) do
   add_foreign_key "employees", "employees", column: "reportsTo", primary_key: "employeeNumber", name: "employees_ibfk_1"
   add_foreign_key "employees", "offices", column: "officeCode", primary_key: "officeCode", name: "employees_ibfk_2"
   add_foreign_key "line_items", "carts"
-  add_foreign_key "line_items", "orders", primary_key: "orderNumber"
-  add_foreign_key "line_items", "products", primary_key: "productCode"
   add_foreign_key "orderdetails", "orders", column: "orderNumber", primary_key: "orderNumber", name: "orderdetails_ibfk_1"
   add_foreign_key "orderdetails", "products", column: "productCode", primary_key: "productCode", name: "orderdetails_ibfk_2"
   add_foreign_key "orders", "customers", column: "customerNumber", primary_key: "customerNumber", name: "orders_ibfk_1"
