@@ -8,6 +8,9 @@
       <%= link_to edit_user_registration_path do %>
         <%= image_tag("login-icon.png") %> <br>Account
       <% end %>
+      <%= link_to cart_path(current_user) do %>
+        <%= image_tag("checkout-icon.png") %> <br>Cart
+      <% end %>
     <% else %>
       <%= link_to new_user_session_path do %>
         <%= image_tag("login-icon.png") %> <br>Login
@@ -15,7 +18,9 @@
       <%= link_to new_user_registration_path do %>
         <%= image_tag("sign-up.png") %> <br>Sign Up
       <% end %>
+      <%= link_to new_user_session_path do %>
+        <%= image_tag("checkout-icon.png") %> <br>Cart
+      <% end %>
     <% end %>
-		<a href="#"><%= image_tag("checkout-icon.png") %><br>Cart</a>
 	</p>
 </nav>

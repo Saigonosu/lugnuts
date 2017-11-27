@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_one :customer, autosave: true
+  has_one :cart, autosave: true
 
   accepts_nested_attributes_for :customer, allow_destroy: true
 

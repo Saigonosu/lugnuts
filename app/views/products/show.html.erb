@@ -4,18 +4,18 @@
 
 <div id="product-detail">
 	<%= image_tag(@product.productlines.image || 'missing.jpg' ) %>
-	
+
 	<div>
 		<h1><%= @product.productName %></h1>
 
-		<h3><%= @product.buyPrice %></h3>
+		<h3><%= @product.MSRP %></h3>
 
 		<p><b>Vendor: </b><%= @product.productVendor %></p>
 
 		<p><b>Description: </b><%= @product.productDescription %></p>
-		
+
 		<nav>
-			<%= link_to 'Add to Cart', '#' %>
+			<%= link_to 'Add to Cart', line_items_path(productCode: @product.productCode), method: :post, remote: true %>
 			<%= link_to 'Edit', edit_product_path(@product) %>
 			<%= link_to 'Back', products_path %>
 		</nav>

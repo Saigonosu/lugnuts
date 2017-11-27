@@ -12,7 +12,7 @@
 				  <%= image_tag('details-icon.png' || 'missing.jpg' ) %>
 				  <br>View
 				<% end %>
-				<%= link_to '#' do %>
+				<%= link_to line_items_path(productCode: product.productCode), method: :post, remote: true do %>
 				  <%= image_tag('add-icon.png' || 'missing.jpg') %>
 				  <br>Add
 				<% end %>

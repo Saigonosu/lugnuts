@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   end
-  
+
    def history
   end
 
@@ -28,6 +28,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    Cart.create(user_id: @user.id)
 
     respond_to do |format|
       if @user.save
