@@ -1,0 +1,19 @@
+
+<div class="user-form" id="signup">
+<h2>User History <%= resource_name.to_s.humanize %></h2>
+
+
+  <div class='order-history'>
+  <%=resource.customer.orders.each do |order| %>
+    <%=order.orderNumber %>
+  <%end%>
+</div>
+
+
+
+<p> <%= button_to "User History", registration_path(resource_name) %></p>
+
+
+
+<%= link_to "Back", :back %>
+</div>

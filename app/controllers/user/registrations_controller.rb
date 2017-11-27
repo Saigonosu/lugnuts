@@ -18,6 +18,11 @@ class User::RegistrationsController < Devise::RegistrationsController
    def edit
      super
    end
+   
+   # GET /resource/edit
+   def history
+     super
+   end
 
   # PUT /resource
    def update
