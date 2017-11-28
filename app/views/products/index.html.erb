@@ -6,13 +6,13 @@
 		<section class='product'>
 			<%= link_to image_tag(product.productlines.image || 'missing.jpg' ), product_path(product) %>
 			<h3><%= product.productName %></h3>
-			<p><%= product.MSRP %></p>
+			<p><%= number_to_currency(product.MSRP) %></p>
 			<section>
 				<%= link_to product_path(product) do %>
 				  <%= image_tag('details-icon.png' || 'missing.jpg' ) %>
 				  <br>View
 				<% end %>
-				<%= link_to line_items_path(productCode: product.productCode), method: :post, remote: true do %>
+				<%= link_to line_items_path(productCode: product.productCode), method: :post do %>
 				  <%= image_tag('add-icon.png' || 'missing.jpg') %>
 				  <br>Add
 				<% end %>

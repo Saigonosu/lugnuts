@@ -1,17 +1,4 @@
 <p id="notice"><%= notice %></p>
 <h1>Cart</h1>
-<table class='table table-striped'>
-  <tbody>
-    <% @cart.line_items.each do |line_item| %>
-      <% product = line_item.product %>
-            <tr>
-			<td><%= link_to image_tag(product.productlines.image || 'missing.jpg' ), product_path(product) %></td>
-              <td><%= link_to product.productName, product_path(product) %></td>
-              <td><%= line_item.quantity %></td>
-              <td><%= product.MSRP %></td>
-              <td><%= "Total: #{product.MSRP * line_item.quantity}" %></td>
-            </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'Back', root_path %>
+<%= render partial: 'carts/table' %>
+<%= link_to 'Continue Shopping', root_path %>
