@@ -79,3 +79,12 @@ a:hover{background-color: transparent; color:#333;}
 @media screen and (max-width: 767px){
 	.user-form > a{border:1px solid #333; display: block; width: 100%; box-sizing: border-box; padding: 5px;}
 }
+
+/*----- Cart -----*/
+table.cart-item{width: 100%; border-collapse:collapse; margin: 2% 0;}
+table.cart-item tr{border: solid thin}
+table.cart-item td a{font-size: 1.3rem; text-decoration: none;}
+table.cart-item form.button_to input{background-color: #337ab7; border: 0px; width: 100%; margin-bottom: 5px; color: #fff; cursor: pointer;}
+table.cart-item td:first-of-type{border:1px solid #333;}
+table.cart-item td:last-of-type{color: green; font-size: 1.3rem;}
+

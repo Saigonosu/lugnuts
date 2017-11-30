@@ -1,4 +1,4 @@
-<table class='table table-striped'>
+<table class="cart-item">
   <tbody>
     <% @cart.line_items.each do |line_item| %>
       <% product = line_item.product %>
@@ -7,10 +7,9 @@
               <td><%= link_to product.productName, product_path(product) %></td>
               <td><%= "x #{line_item.quantity}" %></td>
               <td><%= button_to('+', line_items_path(productCode: product.productCode)) %> <%= button_to('-', line_item_path(productCode: product.productCode), method: :delete)%></td>
-              <td><%= number_to_currency(product.MSRP) %></td>
-              <td><%= "Total: #{number_to_currency(product.MSRP * line_item.quantity)}" %></td>
+              <td><b><%= number_to_currency(product.MSRP) %></b></td>
+              <td><b><%= "Total: #{number_to_currency(product.MSRP * line_item.quantity)}" %></b></td>
             </tr>
     <% end %>
   </tbody>
 </table>
-
