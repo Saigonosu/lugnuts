@@ -5,9 +5,9 @@
             <tr>
 			<td><%= link_to image_tag(product.productlines.image || 'missing.jpg' ), product_path(product) %></td>
               <td><%= link_to product.productName, product_path(product) %></td>
-              <td><%= "x #{line_item.quantity}" %></td>
               <td><%= button_to('+', line_items_path(productCode: product.productCode)) %> <%= button_to('-', line_item_path(productCode: product.productCode), method: :delete)%></td>
-              <td><b><%= number_to_currency(product.MSRP) %></b></td>
+              <td><%= "#{line_item.quantity} x" %></td>
+			  <td><b><%= number_to_currency(product.MSRP) %></b></td>
               <td><b><%= "Total: #{number_to_currency(product.MSRP * line_item.quantity)}" %></b></td>
             </tr>
     <% end %>
