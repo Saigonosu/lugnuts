@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :cart, autosave: true
   has_many :shipping_addresses
   has_many :billing_addresses
+  has_many :reviews
 
   accepts_nested_attributes_for :customer, allow_destroy: true
 

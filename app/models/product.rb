@@ -4,4 +4,5 @@ class Product < ApplicationRecord
   has_many :orderdetails, foreign_key: 'productCode'
   has_many :orders, through: :orderdetails, class_name: 'Order'
   has_many :line_items
+  has_many :reviews
 end

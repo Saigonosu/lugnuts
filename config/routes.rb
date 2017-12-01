@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :shipping_addresses
   resources :billing_addresses
   resources :line_items
