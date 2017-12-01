@@ -57,6 +57,6 @@
 
 
   <div class="actions">
-    <%= form.submit('Continue') %>
+    <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-amount="<%= current_user.cart.total_price*100 %>" data-description="order" data-key="<%= Rails.application.secrets.stripe_publishable_key %>"></script>
   </div>
 <% end %>
