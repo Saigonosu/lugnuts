@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_one :customer, autosave: true
   has_one :cart, autosave: true
+  has_many :shipping_addresses
+  has_many :billing_addresses
 
   accepts_nested_attributes_for :customer, allow_destroy: true
 

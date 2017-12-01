@@ -10,6 +10,7 @@
   <div class='order'>
     <% @orders.each do |order| %>
       <%= order.orderNumber %>
+      <%= order.orderDate %>
       <table class='table table-striped'>
         <tbody>
           <% order.orderdetails.each do |detail| %>
@@ -17,14 +18,14 @@
             <tr>
 			<td><%= link_to image_tag(product.productlines.image || 'missing.jpg' ), product_path(product) %></td>
               <td><%= link_to product.productName, product_path(product) %></td>
-              <td><%= detail.priceEach %></td>
+              <td><%= number_to_currency detail.priceEach %></td>
               <td><%= detail.quantityOrdered %></td>
-              <td><%= "Total: #{detail.total}" %></td>
+              <td><%= "Total: #{number_to_currency detail.total}" %></td>
             </tr>
           <% end %>
         </tbody>
       </table>
-      <p>Order Total: <%= order.total %></p>
+      <p>Order Total: <%= number_to_currency order.total %></p>
     <% end %>
   </div>
 </div>

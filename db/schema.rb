@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127055455) do
+ActiveRecord::Schema.define(version: 20171130062108) do
+
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "user_id"
+    t.string "address_line1"
+    t.string "city"
+    t.string "state"
+    t.integer "zip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "billing_addresses_orders", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "order_id", null: false
+    t.bigint "billing_address_id", null: false
+  end
 
   create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.datetime "created_at", null: false
@@ -88,7 +105,16 @@ ActiveRecord::Schema.define(version: 20171127055455) do
     t.string "status", limit: 15, null: false
     t.text "comments"
     t.integer "customerNumber", null: false
+    t.bigint "billing_address_id"
+    t.bigint "shipping_address_id"
+    t.index ["billing_address_id"], name: "fk_rails_b7a8fe49ff"
     t.index ["customerNumber"], name: "customerNumber"
+    t.index ["shipping_address_id"], name: "fk_rails_267c198c1b"
+  end
+
+  create_table "orders_shipping_addresses", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.bigint "order_id", null: false
+    t.bigint "shipping_address_id", null: false
   end
 
   create_table "payments", primary_key: ["customerNumber", "checkNumber"], force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -133,6 +159,7 @@ ActiveRecord::Schema.define(version: 20171127055455) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "carts", "users"
   add_foreign_key "customers", "employees", column: "salesRepEmployeeNumber", primary_key: "employeeNumber", name: "customers_ibfk_1"
   add_foreign_key "customers", "users"
@@ -141,6 +168,8 @@ ActiveRecord::Schema.define(version: 20171127055455) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "orderdetails", "orders", column: "orderNumber", primary_key: "orderNumber", name: "orderdetails_ibfk_1"
   add_foreign_key "orderdetails", "products", column: "productCode", primary_key: "productCode", name: "orderdetails_ibfk_2"
+  add_foreign_key "orders", "addresses", column: "billing_address_id"
+  add_foreign_key "orders", "addresses", column: "shipping_address_id"
   add_foreign_key "orders", "customers", column: "customerNumber", primary_key: "customerNumber", name: "orders_ibfk_1"
   add_foreign_key "payments", "customers", column: "customerNumber", primary_key: "customerNumber", name: "payments_ibfk_1"
   add_foreign_key "products", "productlines", column: "productLine", primary_key: "productLine", name: "products_ibfk_1"

@@ -12,36 +12,51 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :orderDate %>
-    <%= form.date_select :orderDate, id: :order_orderDate %>
+    <%= form.hidden_field :orderDate, id: :order_orderDate, value: Date.today %>
   </div>
 
   <div class="field">
-    <%= form.label :requiredDate %>
-    <%= form.date_select :requiredDate, id: :order_requiredDate %>
+    <%= form.hidden_field :requiredDate, id: :order_requiredDate, value: Date.today%>
   </div>
 
   <div class="field">
-    <%= form.label :shippedDate %>
-    <%= form.date_select :shippedDate, id: :order_shippedDate %>
+    <%= form.hidden_field :shippedDate, id: :order_shippedDate, value: nil %>
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :order_status %>
+    <%= form.hidden_field :status, id: :order_status, value: 'Receive' %>
   </div>
 
   <div class="field">
-    <%= form.label :comments %>
-    <%= form.text_area :comments, id: :order_comments %>
+    <%= form.hidden_field :comments, id: :order_comments, value: nil %>
   </div>
 
   <div class="field">
-    <%= form.label :customerNumber %>
-    <%= form.number_field :customerNumber, id: :order_customerNumber %>
+    <%= form.hidden_field :customerNumber, id: :order_customerNumber, value: current_user.customer.customerNumber %>
   </div>
+
+  <h2>Shipping Address: Choose one</h2>
+  <%= link_to 'New Shipping Address', new_shipping_address_path %>
+
+  <% current_user.shipping_addresses.each do |shipping| %>
+    <div class='field'>
+      <%= radio_button('order', 'shipping_address_id', shipping.id) %>
+      <%= "#{shipping.address_line1}\n#{shipping.city}, #{shipping.state} #{shipping.zip}" %>
+    </div>
+  <% end %>
+
+  <h2>Billing Address: Choose one</h2>
+  <%= link_to 'New Billing Address', new_billing_address_path %>
+
+  <% current_user.billing_addresses.each do |billing| %>
+    <div class='field'>
+      <%= radio_button('order', 'billing_address_id', billing.id) %>
+      <%= "#{billing.address_line1}\n#{billing.city}, #{billing.state} #{billing.zip}" %>
+    </div>
+  <% end %>
+
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit('Continue') %>
   </div>
 <% end %>

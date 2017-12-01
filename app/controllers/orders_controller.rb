@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = current_user.customer.orders
+    @orders = current_user.customer.orders.order(orderDate: :desc)
   end
 
   # GET /orders/1
@@ -15,6 +15,8 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order.build_shipping_address
+    @order.build_billing_address
   end
 
   # GET /orders/1/edit
@@ -28,6 +30,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        @order.get_line_items_from_cart(current_user)
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -69,6 +72,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:orderDate, :requiredDate, :shippedDate, :status, :comments, :customerNumber)
+      params.require(:order).permit(:orderDate, :requiredDate, :shippedDate, :status, :comments, :customerNumber, :shipping_address_id, :billing_address_id)
     end
 end

@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+<h1>Order Confirmation</h1>
 
 <p>
   <strong>Orderdate:</strong>
@@ -28,6 +29,52 @@
 <p>
   <strong>Customernumber:</strong>
   <%= @order.customerNumber %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.shipping_address.address_line1 %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @order.shipping_address.city %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%= @order.shipping_address.state %>
+</p>
+<p>
+  <strong>Zip:</strong>
+  <%= @order.shipping_address.zip %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.billing_address.address_line1 %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%= @order.billing_address.city %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%= @order.billing_address.state %>
+</p>
+<p>
+  <strong>Zip:</strong>
+  <%= @order.billing_address.zip %>
+</p>
+
+<% @order.orderdetails.each do |detail| %>
+			<%= image_tag(detail.product.productlines.image || 'missing.jpg' ) %>
+      <%= detail.productCode %>
+      <%= detail.quantityOrdered %>
+      <%= number_to_currency(detail.priceEach) %>
+<% end %>
+
+<p>
+<strong>Total:</strong>
+<%= @order.total %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
