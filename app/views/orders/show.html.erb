@@ -74,7 +74,7 @@
 
 <p>
 <strong>Total:</strong>
-<%= @order.total %>
+<%= number_to_currency @order.total %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
