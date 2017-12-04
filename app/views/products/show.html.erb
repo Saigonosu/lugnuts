@@ -14,6 +14,12 @@
 
 		<p><b>Description: </b><%= @product.productDescription %></p>
 
+		
+		<% @product.reviews.each do |review| %> 
+		<%= review.user.first_name %><%= review.user.last_name %>
+		<%= review.review %> <%= review.stars %>
+		<% end %> 
+		
 		<nav>
 			<%= link_to 'Add to Cart', line_items_path(productCode: @product.productCode), method: :post %>
 			<%= link_to 'Edit', edit_product_path(@product) %>
