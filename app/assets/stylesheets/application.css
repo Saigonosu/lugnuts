@@ -88,3 +88,17 @@ table.cart-item form.button_to input{background-color: #337ab7; border: 0px; wid
 table.cart-item td:first-of-type{border:1px solid #333;}
 table.cart-item td:last-of-type{color: green; font-size: 1.3rem;}
 
+/*----- Checkout -----*/
+.checkout{border: 1px solid #333; width: 47%; display: inline-block; box-sizing: border-box; padding: 15px; background-color: #eee; margin: 0 15px;}
+.checkout a{display: inline-block; color: #fff; text-decoration: none; background-color: #337ab7; padding: 10px; margin-bottom: 15px;}
+@media screen and (max-width: 767px){
+	.checkout{width: 100%;}
+}
+.pay-btn{margin: 30px 15px;}
+.pay-btn button span{background: green; border: 0px; color: #fff; text-decoration: none; padding: 10px; font: normal 1rem Arial; box-shadow: none; text-shadow: none; min-height: 100% !important; height: 100%;}
+
+/*----- Confirmation -----*/
+.confirmation{border: 1px solid #333; padding: 15px;}
+.confirmation table.orders{width: 100%; border-collapse: collapse;}
+.confirmation table.orders td{border: solid thin; text-align: center;}
+.confirmation .total{font-size: 2rem; color: green;}

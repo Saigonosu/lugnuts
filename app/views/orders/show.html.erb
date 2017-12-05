@@ -1,19 +1,10 @@
 <p id="notice"><%= notice %></p>
 <h1>Order Confirmation</h1>
 
+<div class="confirmation">
 <p>
-  <strong>Orderdate:</strong>
+  <strong>Date:</strong>
   <%= @order.orderDate %>
-</p>
-
-<p>
-  <strong>Requireddate:</strong>
-  <%= @order.requiredDate %>
-</p>
-
-<p>
-  <strong>Shippeddate:</strong>
-  <%= @order.shippedDate %>
 </p>
 
 <p>
@@ -21,61 +12,27 @@
   <%= @order.status %>
 </p>
 
-<p>
-  <strong>Comments:</strong>
-  <%= @order.comments %>
-</p>
-
-<p>
-  <strong>Customernumber:</strong>
-  <%= @order.customerNumber %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @order.shipping_address.address_line1 %>
-</p>
-<p>
-  <strong>City:</strong>
-  <%= @order.shipping_address.city %>
-</p>
-<p>
-  <strong>State:</strong>
-  <%= @order.shipping_address.state %>
-</p>
-<p>
-  <strong>Zip:</strong>
-  <%= @order.shipping_address.zip %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @order.billing_address.address_line1 %>
-</p>
-<p>
-  <strong>City:</strong>
-  <%= @order.billing_address.city %>
-</p>
-<p>
-  <strong>State:</strong>
-  <%= @order.billing_address.state %>
-</p>
-<p>
-  <strong>Zip:</strong>
-  <%= @order.billing_address.zip %>
-</p>
-
+<table class="orders">
+<thead>
+<td><b>Product</b></td>
+<td><b>Name</b></td>
+<td><b>Quantity</b></td>
+<td><b>Price</b></td>
+</thead>
+<tbody>
 <% @order.orderdetails.each do |detail| %>
-			<%= image_tag(detail.product.productlines.image || 'missing.jpg' ) %>
-      <%= detail.productCode %>
-      <%= detail.quantityOrdered %>
-      <%= number_to_currency(detail.priceEach) %>
+<tr>
+	<td><%= image_tag(detail.product.productlines.image || 'missing.jpg' ) %></td>
+	<td><%= detail.product.productName %></td>
+	<td><%= detail.quantityOrdered %></td>
+	<td><%= number_to_currency(detail.priceEach) %></td>
+</tr>
 <% end %>
+</tbody>
+</table>
 
-<p>
+<p class="total">
 <strong>Total:</strong>
 <%= number_to_currency @order.total %>
 </p>
-
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+</div>

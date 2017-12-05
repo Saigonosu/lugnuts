@@ -34,7 +34,7 @@
   <div class="field">
     <%= form.hidden_field :customerNumber, id: :order_customerNumber, value: current_user.customer.customerNumber %>
   </div>
-
+<div class="checkout">
   <h2>Shipping Address: Choose one</h2>
   <%= link_to 'New Shipping Address', new_shipping_address_path %>
 
@@ -44,7 +44,8 @@
       <%= "#{shipping.address_line1}\n#{shipping.city}, #{shipping.state} #{shipping.zip}" %>
     </div>
   <% end %>
-
+</div>
+<div class="checkout">
   <h2>Billing Address: Choose one</h2>
   <%= link_to 'New Billing Address', new_billing_address_path %>
 
@@ -54,9 +55,9 @@
       <%= "#{billing.address_line1}\n#{billing.city}, #{billing.state} #{billing.zip}" %>
     </div>
   <% end %>
+</div>
 
-
-  <div class="actions">
+  <div class="actions pay-btn">
     <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-amount="<%= current_user.cart.total_price*100 %>" data-description="order" data-key="<%= Rails.application.secrets.stripe_publishable_key %>"></script>
   </div>
 <% end %>

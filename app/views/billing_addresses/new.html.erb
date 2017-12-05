@@ -1,5 +1,7 @@
+<div class="user-form">
 <h1>New Billing Address</h1>
 
 <%= render 'form', billing_address: @billing_address %>
+</div>
 
-<%= link_to 'Back', billing_addresses_path %>
+<%= link_to 'Back', billing_addresses_path, class: 'btn' %>
