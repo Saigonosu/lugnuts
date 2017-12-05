@@ -14,16 +14,19 @@
 
 		<p><b>Description: </b><%= @product.productDescription %></p>
 
-		
-		<% @product.reviews.each do |review| %> 
-		<%= review.user.first_name %><%= review.user.last_name %>
-		<%= review.review %> <%= review.stars %>
-		<% end %> 
-		
+
+
 		<nav>
 			<%= link_to 'Add to Cart', line_items_path(productCode: @product.productCode), method: :post %>
 			<%= link_to 'Edit', edit_product_path(@product) %>
 			<%= link_to 'Back', products_path %>
+      <%= link_to('Write Review', new_review_path(review: {product_id: @product.productCode}))  if user_signed_in? %>
 		</nav>
 	</div>
+</div>
+<div class='reviews'>
+  <% @reviews.each do |review| %>
+    <%= review.user.customer.customerName %>
+    <%= review.review %> <%= review.stars %>
+  <% end %>
 </div>
