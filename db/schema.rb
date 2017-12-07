@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171201041835) do
+ActiveRecord::Schema.define(version: 20171207044209) do
 
-  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "user_id"
     t.string "address_line1"
     t.string "city"
@@ -24,12 +24,12 @@ ActiveRecord::Schema.define(version: 20171201041835) do
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
-  create_table "billing_addresses_orders", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "billing_addresses_orders", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "order_id", null: false
     t.bigint "billing_address_id", null: false
   end
 
-  create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "carts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20171201041835) do
     t.index ["reportsTo"], name: "reportsTo"
   end
 
-  create_table "line_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "line_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "product_id", limit: 15
     t.bigint "cart_id"
     t.integer "quantity", default: 1
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20171201041835) do
     t.index ["shipping_address_id"], name: "fk_rails_267c198c1b"
   end
 
-  create_table "orders_shipping_addresses", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "orders_shipping_addresses", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "order_id", null: false
     t.bigint "shipping_address_id", null: false
   end
@@ -139,10 +139,11 @@ ActiveRecord::Schema.define(version: 20171201041835) do
     t.integer "quantityInStock", limit: 2, null: false
     t.decimal "buyPrice", precision: 10, scale: 2, null: false
     t.decimal "MSRP", precision: 10, scale: 2, null: false
+    t.string "image"
     t.index ["productLine"], name: "productLine"
   end
 
-  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "reviews", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.bigint "user_id"
     t.string "product_id"
     t.string "review"
@@ -153,7 +154,7 @@ ActiveRecord::Schema.define(version: 20171201041835) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
