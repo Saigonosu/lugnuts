@@ -25,7 +25,10 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    fidget_productline = Productline.find_or_create_by(productLine: 'spinner')
     @product = Product.new(product_params)
+    @product.productLine = fidget_productline.productLine
+    binding.pry
 
     respond_to do |format|
       if @product.save
@@ -70,6 +73,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:productName, :productLine, :productScale, :productVendor, :productDescription, :quantityInStock, :buyPrice, :MSRP)
+      params.require(:product).permit(:productCode, :productName, :productLine, :productScale, :productVendor, :productDescription, :quantityInStock, :buyPrice, :MSRP, :image)
     end
 end

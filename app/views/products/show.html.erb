@@ -3,7 +3,7 @@
 <p id="notice"><%= notice %></p>
 
 <div id="product-detail">
-	<%= image_tag(@product.productlines.image || 'missing.jpg' ) %>
+	<%= image_tag(@product.image) %>
 
 	<div>
 		<h1><%= @product.productName %></h1>

@@ -5,4 +5,6 @@ class Product < ApplicationRecord
   has_many :orders, through: :orderdetails, class_name: 'Order'
   has_many :line_items
   has_many :reviews
+
+  mount_uploader :image, ImageUploader
 end

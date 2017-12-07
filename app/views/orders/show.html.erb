@@ -22,7 +22,7 @@
 <tbody>
 <% @order.orderdetails.each do |detail| %>
 <tr>
-	<td><%= image_tag(detail.product.productlines.image || 'missing.jpg' ) %></td>
+	<td><%= image_tag(detail.product.image) %></td>
 	<td><%= detail.product.productName %></td>
 	<td><%= detail.quantityOrdered %></td>
 	<td><%= number_to_currency(detail.priceEach) %></td>

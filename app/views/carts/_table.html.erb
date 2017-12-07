@@ -3,7 +3,7 @@
     <% @cart.line_items.each do |line_item| %>
       <% product = line_item.product %>
             <tr>
-			<td><%= link_to image_tag(product.productlines.image || 'missing.jpg' ), product_path(product) %></td>
+			<td><%= link_to image_tag(product.image), product_path(product) %></td>
               <td><%= link_to product.productName, product_path(product) %></td>
               <td><%= button_to('+', line_items_path(productCode: product.productCode)) %> <%= button_to('-', line_item_path(productCode: product.productCode), method: :delete)%></td>
               <td><%= "#{line_item.quantity} x" %></td>

@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :productName %>
-    <%= form.text_field :productName, id: :product_productName %>
+    <%= form.label :productCode %>
+    <%= form.text_field :productCode, id: :product_productCode %>
   </div>
 
   <div class="field">
-    <%= form.label :productLine %>
-    <%= form.text_field :productLine, id: :product_productLine %>
+    <%= form.label :productName %>
+    <%= form.text_field :productName, id: :product_productName %>
   </div>
 
   <div class="field">
@@ -49,6 +49,11 @@
   <div class="field">
     <%= form.label :MSRP %>
     <%= form.text_field :MSRP, id: :product_MSRP %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image, id: :product_image %>
   </div>
 
   <div class="actions">
