@@ -28,7 +28,6 @@ class ProductsController < ApplicationController
     fidget_productline = Productline.find_or_create_by(productLine: 'spinner')
     @product = Product.new(product_params)
     @product.productLine = fidget_productline.productLine
-    binding.pry
 
     respond_to do |format|
       if @product.save
