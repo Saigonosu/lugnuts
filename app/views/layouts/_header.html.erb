@@ -22,5 +22,10 @@
         <%= image_tag("checkout-icon.png") %> <br>Cart
       <% end %>
     <% end %>
+    <%=form_tag products_path, method: :get do %>
+      <%= label_tag(:search, "Search") %>
+      <%= text_field_tag(:search) %>
+      <%= submit_tag("Search") %>
+    <% end %>
 	</p>
 </nav>

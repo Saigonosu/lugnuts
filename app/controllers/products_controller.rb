@@ -4,7 +4,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.limit 9
+    if params[:search]
+      @products = Product.search(params[:search]).limit 9
+    else
+      @products = Product.fidgets.limit 9
+    end
   end
 
   # GET /products/1
@@ -72,6 +76,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:productCode, :productName, :productLine, :productScale, :productVendor, :productDescription, :quantityInStock, :buyPrice, :MSRP, :image)
+      params.require(:product).permit(:productCode, :productName, :productLine, :productScale, :productVendor, :productDescription, :quantityInStock, :buyPrice, :MSRP, :image, :search)
     end
 end

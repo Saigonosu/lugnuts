@@ -7,4 +7,11 @@ class Product < ApplicationRecord
   has_many :reviews
 
   mount_uploader :image, ImageUploader
+  scope :fidgets, -> { where(productLine: 'spinner')}
+
+  def self.search search
+    wildcard_search = "% #{search} %"
+    #collate clause for case insensitivity when searching
+    where("productName like ? or productDescription like ? or productLine like ? collate utf8_general_ci", wildcard_search, wildcard_search, wildcard_search )
+  end
 end
