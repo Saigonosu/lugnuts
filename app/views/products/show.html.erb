@@ -27,7 +27,11 @@
 </div>
 <div class='reviews'>
   <% @reviews.each do |review| %>
-    <%= review.user.customer.customerName %>
-    <%= review.review %> <%= review.stars %>
+    <div class='review'>
+      <%= review.user.customer.customerName %> <%= review.created_at.strftime("%d/%m/%Y") %>
+      <br>
+      <%= review.review %> <%= review.stars %>
+    </div>
+    <br>
   <% end %>
 </div>

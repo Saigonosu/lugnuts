@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @reviews = @product.reviews.where.not(stars: nil)
+    @reviews = @product.reviews.where.not(stars: nil).order(created_at: :desc)
   end
 
   # GET /products/new

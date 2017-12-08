@@ -15,7 +15,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/new
   def new
     product_id = review_params.fetch(:product_id)
-    @review = Review.new(user: current_user, product_id: product_id)
+    @review = Review.new(user_id: current_user.id, product_id: product_id)
   end
 
   # GET /reviews/1/edit
@@ -29,7 +29,7 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to edit_review_path(@review), notice: 'Review was successfully created.' }
+        format.html { redirect_to product_path(@review.product), notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
@@ -70,6 +70,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:user, :product, :review, :stars, :product_id)
+      params.require(:review).permit(:user, :product, :review, :stars, :user_id, :product_id)
     end
 end
