@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Orders</h1>
+<h1>My Orders</h1>
 
 <% if @orders.empty? %>
   <p>No Orders</p>
@@ -9,9 +9,8 @@
 <div class='orders'>
   <div class='order'>
     <% @orders.each do |order| %>
-      <%= order.orderNumber %>
-      <%= order.orderDate %>
-      <table class='table table-striped'>
+      <p><b><%= "Order Date: #{order.orderDate}" %></b></p>
+      <table class='cart-item'>
         <tbody>
           <% order.orderdetails.each do |detail| %>
             <% product = detail.product%>
@@ -25,7 +24,7 @@
           <% end %>
         </tbody>
       </table>
-      <p>Order Total: <%= number_to_currency order.total %></p>
+      <h2>Order Total: <%= number_to_currency order.total %></h2>
     <% end %>
   </div>
 </div>
