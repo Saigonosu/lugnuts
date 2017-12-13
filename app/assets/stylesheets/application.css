@@ -107,6 +107,8 @@ table.cart-item td:last-of-type{color: green; font-size: 1.3rem;}
 
 /*----- Confirmation -----*/
 .confirmation{border: 1px solid #333; padding: 15px;}
+.confirmation table img{max-width: 200px;}
+.confirmation tbody tr td:first-of-type{width: 15%; padding: 10px;}
 .confirmation table.orders{width: 100%; border-collapse: collapse;}
 .confirmation table.orders td{border: solid thin; text-align: center;}
 .confirmation .total{font-size: 2rem; color: green;}
